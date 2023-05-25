@@ -1,0 +1,12 @@
+body {
+  margin: 0;
+}
+//variables
+@import './assets/custom-variables.scss';
+//components
+@import './components/Layout/Layout.scss';
+@import './components/Navbar/Navbar.scss';
+@import './components/ExchangeTable/ExchangeTable.scss';
+@import './components/Convert/Convert.scss';
+@import './components/button/Button.scss'
+

@@ -1,0 +1,28 @@
+.navbar {
+  display: flex;
+  justify-content: center;
+  background-color: $navbar-bg;
+  width: $component-width;
+  color: $navbar-color;
+  padding: $padding;
+
+  &__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: $layout-width;
+    @media (max-width: $media-mobile) {
+      width: $media-mobile-layout-width;
+    }
+  }
+  
+  &__update {
+    display: flex;
+    align-items: center;
+    gap: $gap;
+  }
+
+  &__logo {
+    cursor: pointer;
+  }
+}

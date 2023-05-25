@@ -1,0 +1,22 @@
+.button {
+  padding: $elements-padding;
+  border-radius: $border-radius;
+  cursor: pointer;
+
+  &__navbar {
+    background-color: $bg-color;
+  }
+
+  &__list {
+    background-color: $navbar-bg;
+    color: $navbar-color
+  }
+
+  &:hover {
+    opacity: 0.9;
+  }
+
+  &:active {
+    opacity: 0.8;
+  }
+}

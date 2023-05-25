@@ -12,6 +12,7 @@ export const Navbar: FC<props> = ({clicked, updated}) => {
     const [lastUpdate, setLastUpdate] = useState('None');
     const {data: dataListCurriencies} = apiLayer.useAllCurrenciesQuery();
     const [fetchData, {data}] = apiLayer.useLazyAllCurrenciesQuery();
+    const lastRequestForData = new Date().toLocaleTimeString();
 
     useEffect(() => {
         if (dataListCurriencies) {
@@ -38,8 +39,14 @@ export const Navbar: FC<props> = ({clicked, updated}) => {
                 </div>
                 <div className='navbar__update'>
                     <div>
-                        Last Update:&nbsp;
+                        Last Data Update:&nbsp;
                         {lastUpdate}
+                        {updated && (
+                            <div>
+                                Last Request:&nbsp;
+                                {lastRequestForData}
+                            </div>
+                        )}
                     </div>
                     <Button
                         variant={ButtonVariant.navbar}

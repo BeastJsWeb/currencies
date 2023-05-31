@@ -5,6 +5,28 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');// eslint-disabl
 
 const isProductionMode = process.env.NODE_ENV === 'production';
 
+const optimized = {
+    splitChunks: {
+        cacheGroups: {
+            reactVendor: {
+                test: /[\\/]node_modules[\\/](react|react-dom)[\\/]/,
+                name: 'react-vendor',
+                chunks: 'all',
+            },
+            reduxVendor: {
+                test: /[\\/]node_modules[\\/](@reduxjs|react-redux|)[\\/]/,
+                name: 'redux-vendor',
+                chunks: 'all',
+            },
+            utilityVendor: {
+                test: /[\\/]node_modules[\\/](react-debounce-input)[\\/]/,
+                name: 'utility-vendor',
+                chunks: 'all',
+            },
+        },
+    },
+};
+
 module.exports = {
     context: __dirname,
     entry: './src/index',
@@ -46,4 +68,5 @@ module.exports = {
         port: 3000,
     },
     devtool: !isProductionMode && 'inline-source-map',
+    optimization: isProductionMode ? optimized : {},
 };

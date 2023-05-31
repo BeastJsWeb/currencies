@@ -1,5 +1,10 @@
 import React, {FC, SetStateAction, Dispatch} from 'react';
 import { Navbar } from '../Navbar';
+/*const Navbar = lazy(() => (
+    import('../Navbar').then(module => (
+        {default: module.Navbar}
+    ))
+));*/
 
 interface Props {
   children: JSX.Element | JSX.Element[],

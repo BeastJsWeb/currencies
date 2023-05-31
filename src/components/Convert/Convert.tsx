@@ -38,6 +38,7 @@ export const Convert: FC<IUpdateDataCurrencies> = ({
                     type='number'
                     minLength={1}
                     debounceTimeout={800}
+                    aria-label="1st currency for convert"
                 />
                 <select
                     className='convert__select'
@@ -54,6 +55,7 @@ export const Convert: FC<IUpdateDataCurrencies> = ({
                     type='number'
                     minLength={1}
                     debounceTimeout={800}
+                    aria-label="2d currency for convert"
                 />
                 <select
                     className='convert__select'

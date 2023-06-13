@@ -1,10 +1,10 @@
 import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react';
-import { ServerResponseLatestCurrencies } from '../models/rates';
+import { ServerResponseLatestCurrencies } from '../types/rates';
 
 const BASE_URL = 'https://api.exchangerate.host';
 
-export const apiLayer = createApi({
-    reducerPath: 'apiLayer/api',
+export const apiCurrencies = createApi({
+    reducerPath: 'apiCurrencies/api',
     tagTypes: ['Currencies'],
     baseQuery: fetchBaseQuery({
         baseUrl: BASE_URL,

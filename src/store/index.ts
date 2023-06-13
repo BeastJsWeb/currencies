@@ -1,13 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit';
 import { setupListeners } from '@reduxjs/toolkit/dist/query';
-import { apiLayer } from '../services/apiLayer';
+import { apiCurrencies } from '../services/apiCurrencies';
 
 export const store = configureStore({
     reducer: {
-        [apiLayer.reducerPath]: apiLayer.reducer,
+        [apiCurrencies.reducerPath]: apiCurrencies.reducer,
     },
     middleware: getDefaultMiddleware => getDefaultMiddleware()
-        .concat(apiLayer.middleware),
+        .concat(apiCurrencies.middleware),
 });
 
 setupListeners(store.dispatch);

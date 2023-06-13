@@ -1,9 +1,9 @@
 import React, {FC} from 'react';
 import { DebounceInput } from 'react-debounce-input';
-import { useConvert } from './useConvert';
-import { IUpdateDataCurrencies } from '../../models/component';
+import { useConvert } from './useCurrencyConverter';
+import { IUpdateDataCurrencies } from '../../types/component';
 
-export const Convert: FC<IUpdateDataCurrencies> = ({
+export const CurrencyConverter: FC<IUpdateDataCurrencies> = ({
     isClickedUpdate,
     fetchSuccess,
 }) => {

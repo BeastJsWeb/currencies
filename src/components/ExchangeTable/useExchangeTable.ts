@@ -1,8 +1,8 @@
 import {useState, useEffect} from 'react';
-import { apiLayer } from '../../services/apiLayer';
+import { apiCurrencies } from '../../services/apiCurrencies';
 import { tableBody, rateTo } from '../../assets/data';
-import { ServerResponseLatestCurrencies } from '../../models/rates';
-import { IUpdateDataCurrencies } from '../../models/component';
+import { ServerResponseLatestCurrencies } from '../../types/rates';
+import { IUpdateDataCurrencies } from '../../types/component';
 
 export const useExchangeTable = ({
     isClickedUpdate,
@@ -13,16 +13,16 @@ export const useExchangeTable = ({
     const [isListOpened, setIsListOpened] = useState(false);
     const [staticLength, setStaticLength] = useState(currenciesLimit);
 
-    const [fetchData, {data, isLoading, isSuccess, isError}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData1, {data: data1, isLoading: isLoading1}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData2, {data: data2, isLoading: isLoading2}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData3, {data: data3, isLoading: isLoading3}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData4, {data: data4, isLoading: isLoading4}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData5, {data: data5, isLoading: isLoading5}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData6, {data: data6, isLoading: isLoading6}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData7, {data: data7, isLoading: isLoading7}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData8, {data: data8, isLoading: isLoading8}] = apiLayer.useLazyGetCurrencyQuery();
-    const [fetchData9, {data: data9, isLoading: isLoading9}] = apiLayer.useLazyGetCurrencyQuery();
+    const [fetchData, {data, isLoading, isSuccess, isError}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData1, {data: data1, isLoading: isLoading1}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData2, {data: data2, isLoading: isLoading2}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData3, {data: data3, isLoading: isLoading3}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData4, {data: data4, isLoading: isLoading4}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData5, {data: data5, isLoading: isLoading5}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData6, {data: data6, isLoading: isLoading6}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData7, {data: data7, isLoading: isLoading7}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData8, {data: data8, isLoading: isLoading8}] = apiCurrencies.useLazyGetCurrencyQuery();
+    const [fetchData9, {data: data9, isLoading: isLoading9}] = apiCurrencies.useLazyGetCurrencyQuery();
 
     const handleShowAll = () => {
         setStaticLength(tableBody?.length);

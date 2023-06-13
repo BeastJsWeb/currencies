@@ -1,37 +1,14 @@
-import React, {FC, useState, Dispatch, SetStateAction, useEffect} from 'react';
+import React, {FC} from 'react';
 import { Button, ButtonVariant } from '../button';
-import { apiLayer } from '../../services/apiLayer';
+import { INavbar } from '../../types/component';
+import { useNavbar } from './useNavbar';
 
-interface props {
-    clicked: Dispatch<SetStateAction<number>>,
-    updated: boolean,
-}
-
-export const Navbar: FC<props> = ({clicked, updated}) => {
-    const [lastUpdate, setLastUpdate] = useState('None');
-
-    const {data: dataListCurriencies} = apiLayer.useAllCurrenciesQuery();
-
-    const [fetchData, {data}] = apiLayer.useLazyAllCurrenciesQuery();
-
-    const lastRequestForData = updated ? new Date().toLocaleTimeString() : '';
-
-    useEffect(() => {
-        if (dataListCurriencies) {
-            setLastUpdate(dataListCurriencies.date);
-        }
-    }, [dataListCurriencies]);
-
-    const handleGetRepos = () => {
-        clicked(state => state + 1);
-        fetchData();
-    };
-
-    useEffect(() => {
-        if (updated && data) {
-            setLastUpdate(data.date);
-        }
-    }, [data, updated]);
+export const Navbar: FC<INavbar> = ({clicked, updated}) => {
+    const {
+        lastUpdate,
+        lastRequestForData,
+        handleGetRepos,
+    } = useNavbar({clicked, updated});
 
     return (
         <header className='navbar'>

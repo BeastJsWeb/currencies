@@ -2,7 +2,7 @@ import React, {FC} from 'react';
 import { Button, ButtonVariant } from '../button';
 import { tableHeaders, tableBody } from '../../assets/data';
 import { useExchangeTable } from './useExchangeTable';
-import { IUpdateDataCurrencies } from '../../models/component';
+import { IUpdateDataCurrencies } from '../../types/component';
 
 export const ExchangeTable: FC<IUpdateDataCurrencies> = ({
     isClickedUpdate,

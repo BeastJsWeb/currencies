@@ -1,7 +1,7 @@
 import {useEffect, useState, ChangeEventHandler} from 'react';
-import { apiLayer } from '../../services/apiLayer';
-import { useAmount } from './useAmount';
-import { IUpdateDataCurrencies } from '../../models/component';
+import { apiCurrencies } from '../../services/apiCurrencies';
+import { useAmount } from '../../hooks/useAmount';
+import { IUpdateDataCurrencies } from '../../types/component';
 
 export const useConvert = ({
     isClickedUpdate,
@@ -11,11 +11,11 @@ export const useConvert = ({
 
     const [currencyAmountChanged, setCurrencyAmountChanged] = useState(true);
 
-    const {data: dataListCurreencies} = apiLayer.useAllCurrenciesQuery();
+    const {data: dataListCurreencies} = apiCurrencies.useAllCurrenciesQuery();
 
     const [currencyForConvert, setCurrencyForConvert] = useState({currency1: '', currency2: ''});
 
-    const [fetchData, {data, isSuccess}] = apiLayer.useLazyGetCurrencyQuery();
+    const [fetchData, {data, isSuccess}] = apiCurrencies.useLazyGetCurrencyQuery();
 
     const currenciesList = Object.keys(dataListCurreencies?.rates || []);
 
@@ -55,7 +55,9 @@ export const useConvert = ({
 
     useEffect(() => fetchSuccess(isSuccess), [isSuccess, fetchSuccess]);
 
-    const {toAmount, fromAmount} = useAmount(data?.rates, currencyAmountChanged, currencyAmount);
+    const amountRate = data && +Object.values(data.rates);
+
+    const {toAmount, fromAmount} = useAmount(currencyAmountChanged, currencyAmount, amountRate);
 
     return {
         currenciesList,

@@ -1,9 +1,9 @@
 import React, {FC, useState, Suspense, lazy} from 'react';
 import { Layout } from './components/Layout';
 
-const Convert = lazy(() => (
-    import('./components/Convert').then(module => (
-        {default: module.Convert}
+const CurrencyConverter = lazy(() => (
+    import('./components/CurrencyConverter').then(module => (
+        {default: module.CurrencyConverter}
     ))
 ));
 const ExchangeTable = lazy(() => (
@@ -22,7 +22,7 @@ export const App: FC = () => {
             updated={isUpdated}
         >
             <Suspense fallback={<div>Loading...</div>}>
-                <Convert
+                <CurrencyConverter
                     isClickedUpdate={isClickedUpdate}
                     fetchSuccess={setIsUpdated}
                 />
